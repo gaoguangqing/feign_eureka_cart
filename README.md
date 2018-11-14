@@ -57,8 +57,37 @@ public class CartServiceImpl implements CartService{
 	}
 }
 ```
-那么为了避免使用Feign的时间问题
-如果生产者的pojo如下的话
+注意生产者pojo与消费者pojo的不同,BasePojo是公共的
+BasePojo
+```
+package com.spoon.pojo;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class BasePojo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Date created;
+	private Date updated;
+	public Date getCreated() {
+		return created;
+	}
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+	public Date getUpdated() {
+		return updated;
+	}
+	public void setUpdated(Date updated) {
+		this.updated = updated;
+	}
+	
+}
+```
+生产者pojo
 ```
 package com.spoon.pojo;
 
@@ -123,7 +152,7 @@ public class Cart extends BasePojo{
 	
 }
 ```
-消费者的pojo没用到的话可以不包含时间类型的属性
+消费者的pojo
 ```
 package com.spoon.pojo;
 
@@ -209,7 +238,7 @@ public interface CartFeign {
 	public SysResult save(@RequestBody Cart cart);
 }
 ```
-提供者的Controller
+生产者的Controller
 ```
 package com.spoon.controller;
 
