@@ -1,13 +1,23 @@
 # feign_eureka_cart
+
 SpringCloud-使用Feign，Eureka注册中心，重构购物车
+
 启动完所有的项目之后，在浏览器输入，多刷新几次就可以看到数据了
+
 http://localhost:9001/cartlist.html
+
 使用下面的链接，更新购物车，需要指定用户id为7哦
+
 http://localhost:9001/cartmodify.html
+
 使用下面的链接，添加商品到购物车，可以尝试重复添加
+
 http://localhost:9001/cartadd.html
+
 使用下面的链接，删除购物车，也需要指定用户的id为7哦
+
 http://localhost:9001/cartdelete.html
+
 本项目使用MyBatisPlus，使用方法如下
 ```
 @Service
