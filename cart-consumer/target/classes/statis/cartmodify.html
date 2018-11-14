@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>购物车</title>
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+</head>
+<body>
+	<h1>购物车修改数量</h1>
+	<form action="/cart/update" method="post">
+	<table border="1">
+		<tr>
+			<td>userId</td>
+			<td><input type="text" name="userId" id="userId" /></td>
+		</tr>
+		<tr>
+			<td>itemId</td>
+			<td><input type="text" name="itemId" id="itemId" /></td>
+		</tr>
+		<tr>
+			<td>数量</td>
+			<td><input type="text" name="num" id="num" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="修改" id="btnadd" /></td>
+		</tr>
+	</table>
+	</form>
+	
+</body>
+</html>

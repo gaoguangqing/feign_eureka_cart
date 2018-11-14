@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>购物车</title>
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+</head>
+<body>
+	<h1>购物车删除</h1>
+	<table border="1">
+		<tr>
+			<td>userId</td>
+			<td><input type="text" name="userId" id="userId" /></td>
+		</tr>
+		<tr>
+			<td>itemId</td>
+			<td><input type="text" name="itemId" id="itemId" /></td>
+		</tr>
+		<tr>
+			<td colspan="2"><input type="submit" value="删除" id="btnadd" /></td>
+		</tr>
+	</table>
+	<script type="text/javascript">
+		$("#btnadd").click(function() {
+			var userId = $("#userId").val();
+			var itemId = $("#itemId").val();
+			var num = $("#num").val();
+
+			$.ajax({
+				url : "/cart/delete/" + userId + "/" + itemId,
+				dataType : "json",
+				type : "get",
+				success : function(result) {
+					if (result.msg=="OK") {
+						alert("删除成功");
+						window.location.href="cartlist.html";
+					} else {
+						alert("删除失败");
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>

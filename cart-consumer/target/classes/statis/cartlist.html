@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>购物车</title>
+<script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+</head>
+<body>
+	<h1>购物车</h1>
+	<a href="cartmodify.html">更新</a>
+	<a href="cartadd.html">保存</a>
+	<a href="cartdelete.html">删除</a>
+	<p>userId默认为7</p>
+		<table border="1">
+			<tr>
+				<td>itemId</td>
+				<td>itemTitle</td>
+				<td>itemImage</td>
+				<td>itemPrice</td>
+				<td>num</td>
+			</tr>
+		</table>
+	<script type="text/javascript">
+	$(function(){
+		getObjects();
+	});
+	function getObjects()
+	{
+		$.post("/cart/query/7", function(result) {
+			if (result.status == 200) {
+				findCartList(result.data);
+			} else {
+				alert(result.msg);
+			}
+		});
+	}
+	function findCartList(data){
+		for ( var i in data) {
+				var tr = $("<tr>");
+				tr.html("<td>"+data[i].itemId+"</td>"+"<td>"+data[i].itemTitle+"</td>"+"<td>"+data[i].itemImage+"</td>"+"<td>"+data[i].itemPrice+"</td>"+"<td>"+data[i].num+"</td>");
+				$("tbody").append(tr);
+			}
+	}
+	function getTr(){
+		
+	}
+	</script>
+</body>
+</html>
